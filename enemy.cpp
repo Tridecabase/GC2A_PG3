@@ -106,6 +106,7 @@ void Enemy::AttackFunc()
 //　 敵の退却関数
 void Enemy::GetOutFunc()
 {
+	isFiring = false;
 	// 目標座標
 	const Vector2 target = { 1320.0f, -50.0f };
 	// 目標座標に向かう力を計算
