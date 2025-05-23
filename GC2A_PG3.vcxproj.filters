@@ -38,6 +38,8 @@
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\StringUtility.cpp">
       <Filter>KamataEngine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="bullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -111,5 +113,7 @@
     <ClInclude Include="C:\KamataEngine\DirectXGame\base\StringUtility.h">
       <Filter>KamataEngine\Include</Filter>
     </ClInclude>
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="bullet.h" />
   </ItemGroup>
 </Project>
