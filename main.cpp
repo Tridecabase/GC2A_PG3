@@ -3,6 +3,7 @@
 #include<string>
 
 template<typename T>
+// 数字を比較するクラス
 class NumberCompare 
 {
 public:
@@ -25,6 +26,7 @@ NumberCompare<float> floatNfloat(3.1f, 4.5f);
 NumberCompare<double> floatNdouble(5.0f, 5.1);
 NumberCompare<double> doubleNdouble(123.0, 321.0);
 
+//結果をプリントする
 std::cout << "Min of 1 and 13: " << std::to_string(intNint.Min(1, 13)) << std::endl;
 std::cout << "Min of 10.0f and 5: " << std::to_string(intNfloat.Min(10.0f, 5)) << std::endl;
 std::cout << "Min of 7 and 18.0: " << std::to_string(intNdouble.Min(7, 18.0)) << std::endl;
