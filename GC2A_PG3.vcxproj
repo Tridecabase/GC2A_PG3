@@ -127,18 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="circle.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="shotgun.cpp" />
-    <ClCompile Include="sword.cpp" />
-    <ClCompile Include="weapon.cpp" />
+    <ClCompile Include="rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="shotgun.h" />
-    <ClInclude Include="sword.h" />
-    <ClInclude Include="weapon.h" />
+    <ClInclude Include="circle.h" />
+    <ClInclude Include="iShape.h" />
+    <ClInclude Include="rectangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
