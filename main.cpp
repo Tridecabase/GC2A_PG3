@@ -23,9 +23,9 @@ int main() {
 	}
 
 	// 西日暮里駅を田端と日暮里の間に挿入
-	auto it = find(eki_list.begin(), eki_list.end(), "Tabata");
-	if (it != eki_list.end()) {
-		eki_list.insert(it, "Nishi-Nippori");
+	auto TabataIt = find(eki_list.begin(), eki_list.end(), "Tabata");
+	if (TabataIt != eki_list.end()) {
+		eki_list.insert(TabataIt, "Nishi-Nippori");
 	}
 
 	// リストの要素を順に出力
@@ -41,7 +41,11 @@ int main() {
 	}
 
 	// 高輪ゲートウェイ駅を田町と品川の間に挿入
-	eki_list.insert(find(eki_list.begin(), eki_list.end(), "Tamachi"), "Takanawa Gateway");
+	//eki_list.insert(find(eki_list.begin(), eki_list.end(), "Tamachi"), "Takanawa Gateway");
+    auto tamachiIt = find(eki_list.begin(), eki_list.end(), "Tamachi");
+    if (tamachiIt != eki_list.end()) {
+    eki_list.insert(tamachiIt, "Takanawa Gateway");
+    }
 
 	// リストの要素を順に出力
 	cout << "\n2021年山手線の駅名リスト:" << endl;
