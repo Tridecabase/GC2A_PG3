@@ -9,44 +9,34 @@
 
 using namespace std;
 
-//　gotoマクロ　xとy
-#define GOTO(x, y) goto __LINE__##x##y
-
 //-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //
 // 学生番号を読み込み、ソートして表示する
 //
 //-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-int main(int argc, char const *argv[]) {
+int main(int argc, char const* argv[]) {
 
 	// 学生番号を格納するための配列
 	vector<string> students;
 	// 学生番号を読み込むファイル
-	string line;
-	ifstream file("students.txt");
-	// 学生番号を抽出する
-	if (file.is_open()) {
-		while (getline(file, line)) {
-			regex re("\"([^\"]*)\"");
-			auto words_begin = sregex_iterator(line.begin(), line.end(), re);
-			auto words_end = sregex_iterator();
-			// 各学生番号を抽出してstudentsに追加
-			for (auto it = words_begin; it != words_end; ++it) {
-				string student = (*it)[1].str();
-				student.erase(0, student.find_first_not_of(" \t\n\r"));
-				student.erase(student.find_last_not_of(" \t\n\r") + 1);
-				if (!student.empty()) {
-					students.push_back(student);
-				}
-			}
-		}
-		file.close();
-	}
-	else {
-		cout << "Unable to open file";
+	FILE* fp = nullptr;
+	errno_t err = fopen_s(&fp, "students.txt", "r");
+	if (err != 0 || fp == nullptr) {
+		cerr << "ファイルを開くことができませんでした。\r\n";
 		return 1;
 	}
+	// 学生番号の読み込み
+	char buf[256];
+	while (fscanf_s(fp, " \"%255[^\"]\"%*[,] ", buf, (unsigned)sizeof(buf)) == 1){
+		if (buf[0] == '\0') {
+			continue;
+		}
+		students.push_back(buf);
+	}
+
+    fclose(fp);
+
 
 	cout << "元の学生番号" << string(20, ' ') << "ソート後の学生番号" << "\r\n";
 	// 学生番号の最大数
@@ -60,7 +50,7 @@ int main(int argc, char const *argv[]) {
 	for (size_t i = 0; i < max_count; ++i) {
 		string student = students[i];
 		string sorted_student = sorted_students[i];
-		cout << student << string(10, ' ') << sorted_student << "\r\n";
+		cout << student << string(10, ' ') << "\033[31m" << sorted_student << "\033[0m" << "\r\n";
 	}
 
 	// 学生の総数
