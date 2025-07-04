@@ -1,6 +1,6 @@
-﻿#include<stdio.h>
-#include<iostream>
-#include<vector>
+﻿#include <stdio.h>
+#include <iostream>
+#include <vector>
 #include <fstream>
 #include <string>
 #include <regex>
@@ -21,7 +21,7 @@ int main(int argc, char const* argv[]) {
 	FILE* fp = nullptr;
 	errno_t err = fopen_s(&fp, "students.txt", "r");
 	if (err != 0 || fp == nullptr) {
-		cerr << "ファイルを開くことができませんでした。\r\n";
+		cerr << "fail to open file\r\n";
 		return 1;
 	}
 	// 学生番号の読み込み
