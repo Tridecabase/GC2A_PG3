@@ -1,7 +1,5 @@
 ﻿#include<stdio.h>
 #include<iostream>
-#include<array>
-#include<functional>
 #include<vector>
 #include <fstream>
 #include <string>
