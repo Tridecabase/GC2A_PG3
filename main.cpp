@@ -54,5 +54,7 @@ int main(int argc, char const* argv[]) {
 	// 学生の総数
 	cout << "\r\n学生の総数: " << max_count << "\r\n";
 
+	delete[] fp; // ファイルポインタの解放
+
 	return 0;
 }
