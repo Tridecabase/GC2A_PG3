@@ -1,8 +1,8 @@
 #include "stage_scene.h"
 
 void StageScene::Init() {
-	// 敵のインスタンスを生成
-	enemy = new Enemy;
+	// 敵のインスタンスを生成	
+	enemy = std::make_unique<Enemy>();
 	// 敵の初期化
 	enemy->Init();
 	//　フェーズの初期化
