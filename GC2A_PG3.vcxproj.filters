@@ -38,8 +38,21 @@
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\StringUtility.cpp">
       <Filter>KamataEngine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="enemy.cpp" />
-    <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="IScene.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="game_manager.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="title_scene.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="stage_scene.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="clear_scene.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\KamataEngine\DirectXGame\audio\Audio.h">
@@ -113,7 +126,10 @@
     <ClInclude Include="C:\KamataEngine\DirectXGame\base\StringUtility.h">
       <Filter>KamataEngine\Include</Filter>
     </ClInclude>
-    <ClInclude Include="enemy.h" />
-    <ClInclude Include="bullet.h" />
+    <ClInclude Include="game_manager.h" />
+    <ClInclude Include="IScene.h" />
+    <ClInclude Include="title_scene.h" />
+    <ClInclude Include="stage_scene.h" />
+    <ClInclude Include="clear_scene.h" />
   </ItemGroup>
 </Project>
