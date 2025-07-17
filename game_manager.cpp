@@ -1,14 +1,12 @@
 #include "game_manager.h"
+#include "player.h"
 
 GameManager::GameManager()
 {
-	// シーンのインスタンスを初期化
-	sceneArray_[TITLE] = std::make_unique<TitleScene>();
-	sceneArray_[STAGE] = std::make_unique<StageScene>();
-	sceneArray_[CLEAR] = std::make_unique<ClearScene>();
-
-	sceneNum_ = TITLE; // 初期シーンはタイトル
-	currentSceneNum_ = sceneNum_;
+	// Playerのインスタンスを作成
+	player_ = std::make_unique<Player>();
+	// Playerの初期化
+	player_->Init();
 }
 
 GameManager::~GameManager() {}
@@ -22,19 +20,12 @@ int GameManager::Update(char* keys, char* preKeys){
 		memcpy(preKeys, keys, 256);
 		Novice::GetHitKeyStateAll(keys);
 
+		// プレイヤーの更新
+		player_->Update(keys, preKeys);
 
-		// シーンのチェック
-		prevSceneNum_ = currentSceneNum_;
-		currentSceneNum_ = sceneArray_[currentSceneNum_]->GetSceneNum();
+		// プレイヤーの描画
+		player_->Render();
 
-		if (prevSceneNum_ != currentSceneNum_) {
-			sceneArray_[currentSceneNum_]->Init(); // シーンの初期化
-		}
-		// シーンの更新
-		sceneArray_[currentSceneNum_]->Update(keys, preKeys);
-
-		// シーンの描画
-		sceneArray_[currentSceneNum_]->Render();
 
 		Novice::EndFrame();
 	}
