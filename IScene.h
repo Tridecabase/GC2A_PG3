@@ -10,7 +10,7 @@ public:
 	// シーンの初期化
 	virtual void Init() = 0;
 	// シーンの更新
-	virtual void Update(char* keys, char* preKeys) = 0;
+	virtual void Update() = 0;
 	// シーンの描画
 	virtual void Render() = 0;
 };

@@ -2,6 +2,7 @@
 
 #include "Novice.h"
 #include "Vector2.h"
+#include "InputHandler.h"
 
 class Player {
 private:
@@ -16,7 +17,7 @@ public:
 	// 初期化
 	void Init();
 	// 更新
-	void Update(char* keys, char* preKeys);
+	void Update();
 	// 描画
 	void Render();
 

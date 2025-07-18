@@ -14,14 +14,8 @@ void Player::Init() {
 	this->radius_ = 10.0f;				// 半径を設定
 }
 
-void Player::Update(char* keys, char* preKeys) {
-	// プレイヤーの更新処理
-	if (keys[DIK_D] || preKeys[DIK_D]) {
-		MoveRight();
-	}
-	if (keys[DIK_A] || preKeys[DIK_A]) {
-		MoveLeft();
-	}
+void Player::Update() {
+
 }
 
 void Player::Render() {

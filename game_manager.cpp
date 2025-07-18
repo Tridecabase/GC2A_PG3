@@ -20,7 +20,7 @@ int GameManager::Update(char* keys, char* preKeys){
 		Novice::GetHitKeyStateAll(keys);
 
 		// ステージシーンの更新
-		stageScene_->Update(keys, preKeys);
+		stageScene_->Update();
 
 		// ステージシーンの描画
 		stageScene_->Render();

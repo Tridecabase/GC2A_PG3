@@ -20,7 +20,7 @@ public:
 	// ステージの初期化
 	void Init() override;
 	// ステージの更新
-	void Update(char* keys, char* preKeys) override;
+	void Update() override;
 	// ステージの描画
 	void Render() override;
 };

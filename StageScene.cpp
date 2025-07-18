@@ -17,7 +17,7 @@ void StageScene::Init()
 	player_ = new Player;
 }
 
-void StageScene::Update(char* keys, char* preKeys)
+void StageScene::Update()
 {
 	// 入力を処理し、対応するコマンドを取得
 	iCommand_ = inputHandler_->HandleInput();
@@ -31,7 +31,7 @@ void StageScene::Update(char* keys, char* preKeys)
 		iCommand_->Exec(*player_);
 	}
 	// プレイヤーの更新
-	player_->Update(keys, preKeys);
+	player_->Update();
 }
 
 void StageScene::Render()
