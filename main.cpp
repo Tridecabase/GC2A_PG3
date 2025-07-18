@@ -37,6 +37,8 @@ int main(int argc, char const* argv[]) {
 		ifstream file("map.csv");
 		if (!file.is_open()) {
 			cerr << "Failed to open file." << endl;
+			unique_lock<std::mutex> lock(mutex);
+			exit = true;
 			condition.notify_all();
 			return;
 		}
@@ -50,13 +52,7 @@ int main(int argc, char const* argv[]) {
 				mapchip.push(line);
 			}
 			condition.notify_all();
-
-			if (exit) {
-				fclose(fp); // ファイルを閉じる
-				break;
-			}
 		}
-
 		{
 			unique_lock<std::mutex> lock(mutex);
 			exit = true;
@@ -73,34 +69,12 @@ int main(int argc, char const* argv[]) {
 				cout << mapchip.front() << endl;
 				mapchip.pop();
 			}
-
-			if (mapchip.empty()) {
-				exit = true; // 読み込み完了フラグを設定
-				condition.notify_all(); // 条件変数を通知
-				break;
-			}
 		}
 	});
 
-	// メインループ
-	while (true)
-	{
-		// マップチップを読み込む
-		thread th1([&mapchip, &condition]() {
-			condition.notify_all(); // 条件変数を通知
-		});
-
-		// マップチップを表示
-		thread th2([&mapchip, &condition]() {
-			condition.notify_all(); // 条件変数を通知
-		});
-
-		// スレッドの終了を待機
-		th1.join();
-		th2.join();
-	}
-
-	exit = true; // 読み込み完了フラグを設定
+	// スレッドの終了を待機
+	th1.join();
+	th2.join();
 
 	return 0;
 }
