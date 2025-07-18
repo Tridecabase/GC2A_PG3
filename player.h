@@ -8,7 +8,6 @@ private:
 	// プレイヤーの位置、速度
 	Vector2 pos_;
 	Vector2 speed_;
-	
 	float radius_;
 
 public:

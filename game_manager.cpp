@@ -3,10 +3,9 @@
 
 GameManager::GameManager()
 {
-	// Playerのインスタンスを作成
-	player_ = std::make_unique<Player>();
-	// Playerの初期化
-	player_->Init();
+	// ステージシーンの初期化
+	stageScene_ = new StageScene();
+	stageScene_->Init();
 }
 
 GameManager::~GameManager() {}
@@ -20,19 +19,22 @@ int GameManager::Update(char* keys, char* preKeys){
 		memcpy(preKeys, keys, 256);
 		Novice::GetHitKeyStateAll(keys);
 
-		// プレイヤーの更新
-		player_->Update(keys, preKeys);
+		// ステージシーンの更新
+		stageScene_->Update(keys, preKeys);
 
-		// プレイヤーの描画
-		player_->Render();
+		// ステージシーンの描画
+		stageScene_->Render();
 
 
 		Novice::EndFrame();
-	}
 
-	// ESCキーが押されたらループを抜ける
-	if (preKeys[DIK_ESCAPE] == 0 && keys[DIK_ESCAPE] != 0) {
-		return -1; // ゲーム終了
+		// ESCキーが押されたらループを抜ける
+		if (preKeys[DIK_ESCAPE] == 0 && keys[DIK_ESCAPE] != 0) {
+			delete stageScene_;
+			stageScene_ = nullptr;
+			return 1; // ゲームを終了する
+		}
+
 	}
 
 	return 0;

@@ -12,5 +12,5 @@ public:
 	// シーンの更新
 	virtual void Update(char* keys, char* preKeys) = 0;
 	// シーンの描画
-	virtual void Render();
+	virtual void Render() = 0;
 };

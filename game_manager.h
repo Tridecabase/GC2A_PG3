@@ -3,10 +3,13 @@
 #include <memory>
 #include "Input.h"
 #include "Player.h"
+#include "StageScene.h"
+
 
 class GameManager {
 private:
-	std::unique_ptr<Player> player_;
+	
+	StageScene* stageScene_;
 
 public:
 	GameManager();
